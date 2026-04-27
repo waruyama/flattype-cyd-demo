@@ -1,13 +1,13 @@
 # Flattype on a Cheap Yellow Display (ESP32-2432S028R)
 
 
-[![Flattype CYD demo](img/flattype-cyd-demo1.jpg)](video/flattype-cyd-demo1.mp4)
+<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo1.mp4" title="video/flattype-cyd-demo1.mp4"></video>
 
 
 
 ## What is this?
 
-THis demo shows rendering of TrueType vector font in a very resource constained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust — shaper, glyph-outline extractor, and anti-aliased rasterizer — runs fits inside an ESP32 with **320 KB of Ram and 4 MB of flash awith no PSRAM**. It can handle advanced typogaphy features like ligartures and complex scripts like Arabic, Indic, Khmer and THai.
+This demo shows rendering of TrueType vector font in a very resource constained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust — shaper, glyph-outline extractor, and anti-aliased rasterizer — runs fits inside an ESP32 with **320 KB of Ram and 4 MB of flash awith no PSRAM**. It can handle advanced typogaphy features like ligartures and complex scripts like Arabic, Indic, Khmer and THai.
 
 This repository is a self-contained demo for the **Cheap Yellow Display** (ESP32-2432S028R) — the popular ~$10 ESP32 dev board with a 320 × 240 ILI9341 LCD and an XPT2046 resistive touchscreen.
 
