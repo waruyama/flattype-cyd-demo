@@ -1,13 +1,13 @@
 # Flattype on a Cheap Yellow Display (ESP32-2432S028R)
 
 
-[<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo1.mp4" title="video/flattype-cyd-demo1.mp4"></video>
+[<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo1.mp4" title="Demo of Flattype on Cheap Yellow Display"></video>
 ](https://github.com/user-attachments/assets/c9c6e607-fc47-4d57-8638-0d4b6ed81f2b)
 
 
 ## What is this?
 
-This demo shows rendering of TrueType vector font in a very resource constained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust — shaper, glyph-outline extractor, and anti-aliased rasterizer — runs fits inside an ESP32 with **320 KB of Ram and 4 MB of flash awith no PSRAM**. It can handle advanced typogaphy features like ligartures and complex scripts like Arabic, Indic, Khmer and THai.
+This demo shows rendering of TrueType vector font in a very resource constained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust — shaper, glyph-outline extractor, and anti-aliased rasterizer — runs fits inside an ESP32 with **320 KB of Ram and 4 MB of flash awith no PSRAM**. It can handle advanced typogaphy features like ligartures and complex scripts like Arabic, Indic, Khmer and Thai.
 
 This repository is a self-contained demo for the **Cheap Yellow Display** (ESP32-2432S028R) — the popular ~$10 ESP32 dev board with a 320 × 240 ILI9341 LCD and an XPT2046 resistive touchscreen.
 
@@ -32,6 +32,8 @@ The whole thing is reactive to a custom three-row touch gesture model: the top o
 ## What's in the binary
 
 Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** (embedded as `include_bytes!` in the binary's read-only data) and the remaining ~480 KB is code + data. Sizes are from `xtensa-esp32-elf-size` and a per-symbol breakdown via `xtensa-esp32-elf-nm` on a release build.
+
+![Binary percentages](img/binary-donut-chart.png)
 
 **Fonts** (read-only data, embedded in flash):
 
