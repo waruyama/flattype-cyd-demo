@@ -1,9 +1,8 @@
 # Flattype on a Cheap Yellow Display (ESP32-2432S028R)
 
 
-<video src="flattype-cyd-demo1.mp4" width="600" controls>
-  Your browser does not support the video tag.
-</video>
+[![Flattype CYD demo](img/flattype-cyd-demo1.mp4)](video/flattype-cyd-demo1.mp4)
+
 
 
 ## What is this?
