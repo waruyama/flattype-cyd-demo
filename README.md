@@ -1,7 +1,7 @@
 # Flattype on a Cheap Yellow Display (ESP32-2432S028R)
 
 
-[![Flattype CYD demo](img/flattype-cyd-demo1.mp4)](video/flattype-cyd-demo1.mp4)
+[![Flattype CYD demo](img/flattype-cyd-demo1.jpg)](video/flattype-cyd-demo1.mp4)
 
 
 
