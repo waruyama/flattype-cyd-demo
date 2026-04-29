@@ -24,14 +24,14 @@ The whole thing is reactive to a custom three-row touch gesture model: the top o
 
 ## Hardware
 
-- **Cheap Yellow Display** (ESP32-2432S028R). Variants without the resistive touch panel will not work.
+- **Cheap Yellow Display** (ESP32-2432S028R). Variants without the resistive touch panel will most likely not work.
 - 320 × 240 ILI9341 LCD over SPI2 at 80 MHz with DMA.
 - XPT2046 resistive touchscreen on SPI3 at 2 MHz.
-- Standard 4 MB flash, no PSRAM, ~320 KB internal SRAM.
+- Standard 4 MB flash, no PSRAM, **~320 KB internal SRAM**.
 
 ## What's in the binary
 
-Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** (embedded as `include_bytes!` in the binary's read-only data) and the remaining ~480 KB is code + data. Sizes are from `xtensa-esp32-elf-size` and a per-symbol breakdown via `xtensa-esp32-elf-nm` on a release build.
+Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** from Google Fonts (embedded as `include_bytes!` in the binary's read-only data) and the remaining ~480 KB is code + data. Sizes are from `xtensa-esp32-elf-size` and a per-symbol breakdown via `xtensa-esp32-elf-nm` on a release build.
 
 ![Binary percentages](img/binary-donut-chart.png)
 
@@ -40,24 +40,24 @@ Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** (embedded as `
 | Font | Size |
 |---|---:|
 | Noto Nastaliq Urdu | 517 KB |
-| Hind (Devanagari) | 285 KB |
+| Hind | 285 KB |
 | Noto Sans Arabic | 188 KB |
 | NotoEmoji (subsetted) | 186 KB |
 | Roboto Regular | 167 KB |
 | Noto Sans Khmer | 102 KB |
-| HennyPenny (display) | 79 KB |
-| Bonbon (display) | 70 KB |
-| SnowburstOne (display) | 65 KB |
-| Peralta (display) | 57 KB |
-| Almendra (display) | 56 KB |
-| Ultra (display) | 50 KB |
-| Assistant (Latin + Hebrew) | 49 KB |
-| Droid Serif (display) | 43 KB |
-| Architects Daughter (display) | 37 KB |
-| Orbitron (display) | 24 KB |
+| HennyPenny | 79 KB |
+| Bonbon | 70 KB |
+| SnowburstOne | 65 KB |
+| Peralta | 57 KB |
+| Almendra | 56 KB |
+| Ultra | 50 KB |
+| Assistant | 49 KB |
+| Droid Serif | 43 KB |
+| Architects Daughter | 37 KB |
+| Orbitron | 24 KB |
 | **Fonts subtotal** | **~2.0 MB** |
 
-The fonts here are not subsetted (except for emoji); a real product would slim them down dramatically.
+All are static monochrome vector fonts (not variable fonts). The fonts were downloaded from Google Fonts and are not subsetted (except for emoji); For a real product they would be slimmed down.
 
 **Code and data** (~480 KB total):
 
@@ -92,7 +92,7 @@ Five demos cycle with the **top row** of the touchscreen — left to go back, ri
 
 ## Credits
 
-- Flattype — the OpenType pipeline, ported to Rust from the JavaScript original.
+- [Flattype](https://www.flattype.com) — the OpenType shaper and renderer, ported to Rust from the JavaScript original.
 - [mipidsi](https://crates.io/crates/mipidsi) — ILI9341 driver.
 - [esp-idf-hal](https://crates.io/crates/esp-idf-hal) — ESP-IDF Rust bindings.
 - Fonts: Roboto, Noto Sans family, Hind, Almendra, Assistant, and the display faces — all from Google Fonts under the SIL Open Font License.
