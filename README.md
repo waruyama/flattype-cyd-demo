@@ -1,7 +1,7 @@
 # Flattype on a Cheap Yellow Display (ESP32-2432S028R)
 
 
-[<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo1.mp4" title="Demo of Flattype on Cheap Yellow Display"></video>
+[<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo-cHtd6wyP.mp4" title="Demo of Flattype on Cheap Yellow Display"></video>
 ](https://github.com/user-attachments/assets/c9c6e607-fc47-4d57-8638-0d4b6ed81f2b)
 
 
