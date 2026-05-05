@@ -2,7 +2,7 @@
 
 
 [<video controls src="https://github.com/waruyama/flattype-cyd-demo/blob/main/video/flattype-cyd-demo-cHtd6wyP.mp4" title="Demo of Flattype on Cheap Yellow Display"></video>
-](https://github.com/user-attachments/assets/c9c6e607-fc47-4d57-8638-0d4b6ed81f2b)
+](https://github.com/user-attachments/assets/e0aefb1e-3466-4e44-a137-e85ac51900db)
 
 
 ## What is this?
