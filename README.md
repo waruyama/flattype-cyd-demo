@@ -31,9 +31,28 @@ The whole thing is reactive to a custom three-row touch gesture model: the top o
 
 ## What's in the binary
 
-Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** from Google Fonts (embedded as `include_bytes!` in the binary's read-only data) and the remaining ~645 KB is code + data. Sizes are from `xtensa-esp32-elf-size` and a per-symbol breakdown via `xtensa-esp32-elf-nm` on a release build.
+Total flashed image is **~2.6 MB**, of which **~1.9 MB is fonts** from Google Fonts (embedded as `include_bytes!` in the binary's read-only data) and the remaining ~645 KB is code + data. Sizes are from `xtensa-esp32-elf-size` and a per-symbol breakdown via `xtensa-esp32-elf-nm` on a release build.
 
 ![Binary percentages](img/binary-donut-chart.png)
+
+**Code and data** (~480 KB total):
+
+| Component                                                          |         Size |
+|--------------------------------------------------------------------|-------------:|
+| **Flattype** code and data (bidi, shaper, renderer, rasterizer)    |  **~135 KB** |
+| Render path (flattener, rasterizer, pushing)                       |       ~35 KB |
+| **Text shaping + rendering + rasterizing subtotal**                |  **~170 KB** |
+| Demo logic (layout, touch, display, intro, the 5 demos, `main`)    |       ~30 KB |
+| ESP-IDF C runtime (FreeRTOS, drivers, ROM glue)                    |      ~165 KB |
+| Rust (`core`, `std` + `alloc`)                                     |      ~155 KB |
+| Backtrace machinery (`gimli`, `addr2line`, `rustc_demangle`, etc)  |       ~85 KB |
+| `compiler_builtins`, `esp-idf-hal`, `mipidsi`, other small crates  |        ~8 KB |
+| Misc rodata not attributable above (vtables, format strings, etc.) |       ~20 KB |
+| **Code + data subtotal**                                           |  **~635 KB** |
+| **Fonts (16 .ttf files embedded via include_bytes!)**              | **~1.93 MB** |
+| **Grand total**                                                    |  **~2.6 MB** |
+
+The headline number worth flagging: **the entire OpenType pipeline (shaping, outline extraction, flattening, and anti-aliased rasterizing) compiles to about 76 KB**. The largest single non-font cost is the ESP-IDF C runtime at ~147 KB, which is essentially fixed overhead for any Rust ESP32 program with `std` support, not specific to this demo.
 
 **Fonts** (read-only data, embedded in flash):
 
@@ -58,25 +77,6 @@ Total flashed image is **~2.6 MB**, of which **~2.0 MB is fonts** from Google Fo
 | **Fonts subtotal** | **~1.93 MB** |
 
 All are static monochrome vector fonts (not variable fonts). The fonts were downloaded from Google Fonts and are not subsetted (except for emoji); For a real product they would be slimmed down.
-
-**Code and data** (~480 KB total):
-
-| Component                                                          |         Size |
-|--------------------------------------------------------------------|-------------:|
-| **Flattype** code and data (bidi, shaper, renderer, rasterizer)    |  **~135 KB** |
-| Render path (flattener, rasterizer, pushing)                       |       ~35 KB |
-| **Font shaping + rendering + rasterizing subtotal**                |  **~170 KB** |
-| Demo logic (layout, touch, display, intro, the 5 demos, `main`)    |       ~30 KB |
-| ESP-IDF C runtime (FreeRTOS, drivers, ROM glue)                    |      ~165 KB |
-| Rust (`core`, `std` + `alloc`)                                     |      ~155 KB |
-| Backtrace machinery (`gimli`, `addr2line`, `rustc_demangle`, etc)  |       ~85 KB |
-| `compiler_builtins`, `esp-idf-hal`, `mipidsi`, other small crates  |        ~8 KB |
-| Misc rodata not attributable above (vtables, format strings, etc.) |       ~20 KB |
-| **Code + data subtotal**                                           |  **~635 KB** |
-| ** Fonts (16 .ttf files embedded via include_bytes!) **            | **~1.93 MB** |
-| **Grand total**                                                    |  **~2.6 MB** |
-
-The headline number worth flagging: **the entire OpenType pipeline (shaping, outline extraction, flattening, and anti-aliased rasterizing) compiles to about 76 KB**. The largest single non-font cost is the ESP-IDF C runtime at ~147 KB, which is essentially fixed overhead for any Rust ESP32 program with `std` support, not specific to this demo.
 
 ## Demos
 
