@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flattype CYD demo</title>
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 40rem;
+            margin: 4rem auto;
+            padding: 0 1rem;
+            line-height: 1.5;
+        }
+
+        esp-web-install-button {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<h1>flattype CYD demo</h1>
+<p>Plug your Cheap Yellow Display (ESP32-2432S028R) into USB, then click below in Chrome or Edge.</p>
+<esp-web-install-button manifest="manifest.json"></esp-web-install-button>
+<p><small>Requires a Chromium-based browser with WebSerial. The install button will be hidden in Firefox/Safari.</small>
+</p>
+</body>
+</html>

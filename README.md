@@ -162,6 +162,28 @@ The headline number worth flagging: **the entire OpenType pipeline (shaping, out
 
 All are static monochrome vector fonts (not variable fonts). The fonts were downloaded from Google Fonts and are not subsetted (except for emoji); for a real product they would be slimmed down.
 
+
+## Install the demo
+
+### Web flasher (recommended)
+
+Open **<https://janbo.github.io/flattype-cyd-demo/>** in Chrome or Edge, plug your CYD into USB, and click **Connect**. Flashing takes about 30 seconds.
+
+### Manual install
+
+If you can't use the web flasher (Firefox, Safari, Linux without WebSerial permissions, etc.), grab `dist/firmware.bin` and flash it with [`esptool.py`](https://github.com/espressif/esptool):
+
+  ```bash
+  esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x0 firmware.bin
+
+  Or with espflash (https://github.com/esp-rs/espflash):
+
+  espflash write-bin 0x0 firmware.bin
+
+  The image is a merged ESP32 build (bootloader + partition table + app, 4 MB) that flashes at offset 0x0.
+  ```
+
+
 ## Credits
 
 - [Flattype](https://www.flattype.com): the OpenType shaper and renderer, ported to Rust from the JavaScript original.
