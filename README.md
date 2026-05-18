@@ -121,17 +121,15 @@ All measurements are with smallest font size and maximum number of visible glyph
 | Stage                | Single glyph |          Latin |     Arabic | Devanagari |     Hebrew |      Emoji |
 |----------------------|-------------:|---------------:|-----------:|-----------:|-----------:|-----------:|
 | Number of glyphs     |            1 |        360-548 |        809 |        618 |        623 |        208 |
-| **Shaping**          |         0 ms |       12-44 ms |      90 ms |     215 ms |      34 ms |       8 ms |
+| **Shaping**          |         0 ms |       12-46 ms |      79 ms |     156 ms |      34 ms |       9 ms |
 | Line-breaking        |         1 ms |        7-10 ms |      14 ms |      14 ms |      13 ms |       0 ms |
-| Rendering            |         0 ms |      25-100 ms |      51 ms |      25 ms |      19 ms |      93 ms |
-| Flattening           |         0 ms |       13-65 ms |      37 ms |      21 ms |      14 ms |      56 ms |
-| Rasterizing          |       1-2 ms |      35-190 ms |     130 ms |     112 ms |      80 ms |     214 ms |
-| Pushing              |        18 ms |          18 ms |      19 ms |      19 ms |      18 ms |      19 ms |
-| Other                |         0 ms |           3 ms |       4 ms |       3 ms |       2 ms |       2 ms |
-| **Refresh subtotal** |    **21 ms** | **130-340 ms** | **258 ms** | **206 ms** | **148 ms** | **388 ms** |
-| **Total**            |    **21 ms** | **145-370 ms** | **348 ms** | **421 ms** | **182 ms** | **396 ms** |
-
-These figures are a first pass, not a ceiling. Performance has already been tuned, but there's headroom to do better.
+| Rendering            |         0 ms |       25-97 ms |      47 ms |      30 ms |      18 ms |      95 ms |
+| Flattening           |         0 ms |       13-65 ms |      35 ms |      21 ms |      14 ms |      56 ms |
+| Rasterizing          |       1-2 ms |      64-187 ms |     121 ms |     111 ms |      77 ms |     199 ms |
+| Pushing              |        18 ms |           5 ms |       5 ms |       5 ms |       4 ms |       5 ms |
+| Other                |         0 ms |           1 ms |       1 ms |       1 ms |       1 ms |       1 ms |
+| **Refresh subtotal** |    **21 ms** | **114-314 ms** | **224 ms** | **183 ms** | **130 ms** | **360 ms** |
+| **Total**            |    **21 ms** | **135-350 ms** | **303 ms** | **339 ms** | **164 ms** | **369 ms** |
 
 ## What's in the binary
 
@@ -167,7 +165,7 @@ All are static monochrome vector fonts (not variable fonts). The fonts were down
 
 ### Web flasher (recommended)
 
-Open **<https://janbo.github.io/flattype-cyd-demo/>** in Chrome or Edge, plug your CYD into USB, and click **Connect**. Flashing takes about 30 seconds.
+Open **<https://waruyama.github.io/flattype-cyd-demo-install/>** in Chrome or Edge, plug your CYD into USB, and click **Connect**. Flashing takes about 30 seconds.
 
 ### Manual install
 

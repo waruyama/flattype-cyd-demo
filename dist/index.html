@@ -3,27 +3,129 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>flattype CYD demo</title>
+    <title>Flattype CYD Demo</title>
     <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
     <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f7f5f0;
+            --fg: #1c1c1c;
+            --muted: #5a5a5a;
+            --accent: #d97706;
+            --card: #ffffff;
+            --border: #e6e1d6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #14171c;
+                --fg: #f1efe9;
+                --muted: #a3a3a3;
+                --accent: #fbbf24;
+                --card: #1c2027;
+                --border: #2a2f37;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: system-ui, sans-serif;
-            max-width: 40rem;
-            margin: 4rem auto;
-            padding: 0 1rem;
-            line-height: 1.5;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        main {
+            max-width: 36rem;
+            width: 100%;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 0.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .lede {
+            font-size: 1.1rem;
+            color: var(--fg);
+            margin: 0 0 1.5rem;
+        }
+
+        ol {
+            padding-left: 1.25rem;
+            margin: 0 0 1.75rem;
+            color: var(--fg);
+        }
+
+        ol li {
+            margin-bottom: 0.4rem;
+        }
+
+        .install {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 1.25rem;
+        }
+
+        .fineprint {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-align: center;
+            margin: 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0 1.5rem;
         }
 
         esp-web-install-button {
-            margin-top: 1rem;
+            --esp-tools-button-color: #0A7FF6;
+            --esp-tools-button-text-color: #fff;
         }
     </style>
 </head>
 <body>
-<h1>flattype CYD demo</h1>
-<p>Plug your Cheap Yellow Display (ESP32-2432S028R) into USB, then click below in Chrome or Edge.</p>
-<esp-web-install-button manifest="manifest.json"></esp-web-install-button>
-<p><small>Requires a Chromium-based browser with WebSerial. The install button will be hidden in Firefox/Safari.</small>
-</p>
+<main>
+    <p class="eyebrow">Flattype CYD Demo</p>
+    <h1>Welcome — let's flash your CYD.</h1>
+    <p class="lede">This page installs the Flattype demo firmware onto a Cheap Yellow Display (ESP32-2432S028R), straight from your browser. No toolchain, no command line.</p>
+
+    <ol>
+        <li>Plug the CYD into your computer with a USB cable.</li>
+        <li>Open this page in Chrome or Edge (desktop).</li>
+        <li>Click <strong>Connect</strong> below and pick the serial port.</li>
+    </ol>
+
+    <div class="install">
+        <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
+    </div>
+
+    <hr>
+    <p class="fineprint">Requires a Chromium-based browser with WebSerial. The install button stays hidden in Firefox and Safari. &middot; <a href="LICENSE.txt">License</a></p>
+</main>
 </body>
 </html>
