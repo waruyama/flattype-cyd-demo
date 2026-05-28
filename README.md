@@ -9,9 +9,9 @@
 
 **All the text you see in this demo is rendered live on the chip from TrueType fonts. There are no prerendered bitmaps, no glyph atlases, nothing pre-baked. All the text goes through the full OpenType shaper and rasterizer.**
 
-This demo shows rendering of TrueType vector fonts in a very resource-constrained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust (shaper, glyph-outline extractor, and anti-aliased rasterizer) that fits inside an ESP32 with **320 KB of RAM, 4 MB of flash, and no PSRAM**. It can handle advanced typography features like ligatures and complex scripts like Arabic, Indic, Khmer, and Thai.
+This repository contains a ready-to-flash installable version of a demo that showcases TrueType vector font rendering in a very resource-constrained embedded environment using Flattype. Flattype is a tiny OpenType pipeline written in pure Rust (shaper, glyph-outline extractor, and anti-aliased rasterizer) that fits inside an ESP32 with **320 KB of RAM, 4 MB of flash, and no PSRAM**. It can handle advanced typography features like ligatures and complex scripts like Arabic, Indic, Khmer, and Thai.
 
-This repository is a self-contained demo for the **Cheap Yellow Display** (ESP32-2432S028R), the popular ~$10 ESP32 dev board with a 320 × 240 ILI9341 LCD and an XPT2046 resistive touchscreen.
+The demo is designed for the **Cheap Yellow Display** (ESP32-2432S028R), the popular ~$10 ESP32 dev board with a 320 × 240 ILI9341 LCD and an XPT2046 resistive touchscreen.
 
 It runs the full OpenType pipeline live on the chip:
 
@@ -23,6 +23,11 @@ It runs the full OpenType pipeline live on the chip:
 - Anti-aliased, gamma-corrected rendering, drawn to the LCD in horizontal strips.
 
 Navigation works via a three-row touch gesture model: the top of the screen cycles between demos, the middle row navigates within a demo, and the bottom row is a swipe / slider area.
+
+
+## Why this matters
+
+This appears to be the first demonstration of full OpenType shaping with complex script support on hardware this constrained. Typically, embedded displays meant pre-rendering bitmaps (inflexible, storage-heavy) or commissioning special fonts. Here, any text is shaped and rasterized live: ligatures, kerning, complex scripts (Arabic, Indic, Thai, Khmer, etc.), and bidirectional text reordering. Put any standard OpenType or TrueType font on flash, and the pipeline handles everything at render time on a ~$10 microcontroller with 320 KB of RAM. All in 135 KB of code.
 
 
 ## Demos
@@ -171,15 +176,17 @@ Open **<https://waruyama.github.io/flattype-cyd-demo-install/>** in Chrome or Ed
 
 If you can't use the web flasher (Firefox, Safari, Linux without WebSerial permissions, etc.), grab `dist/firmware.bin` and flash it with [`esptool.py`](https://github.com/espressif/esptool):
 
-  ```bash
-  esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x0 firmware.bin
+```bash
+esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x0 firmware.bin
+```
 
-  Or with espflash (https://github.com/esp-rs/espflash):
+Or with [`espflash`](https://github.com/esp-rs/espflash):
 
-  espflash write-bin 0x0 firmware.bin
+```bash
+espflash write-bin 0x0 firmware.bin
+```
 
-  The image is a merged ESP32 build (bootloader + partition table + app, 4 MB) that flashes at offset 0x0.
-  ```
+The image is a merged ESP32 build (bootloader + partition table + app, 4 MB) that flashes at offset 0x0.
 
 
 ## Credits
